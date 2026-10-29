@@ -28,3 +28,8 @@ jar --create --file installer.jar --main-class InstallTemplates -C build .
 ```
 
 자동 검증은 임시 작업공간에서 실행됩니다. 설치·중복 방지·설정 보존·복원·잘못된 경로 거부를 확인합니다. Windows CMD 실행 파일 자체는 Windows에서 직접 검증하지 않았습니다.
+
+
+## 라이선스
+
+이 프로젝트의 자체 소스 코드와 문서는 [MIT License](LICENSE)로 공개합니다. 외부 라이브러리·데이터·미디어에는 각 출처의 조건이 적용됩니다. [외부 자료 안내](THIRD_PARTY_NOTICES.md)를 참고하세요.
