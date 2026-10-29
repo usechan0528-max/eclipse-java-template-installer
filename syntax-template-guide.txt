@@ -1,0 +1,605 @@
+[현재 설정] F9에서 커서 위치에 관계없이 문법 55개 + 롱 26개를 표시합니다. 접두어가 있으면 해당 약어로 필터링됩니다.
+각 템플릿은 // 삽입 위치: 주석을 참고해 적절한 위치에 넣으세요.
+롱 템플릿의 전체 용도는 oj-full-templates-guide.txt를 확인하세요.
+
+Java 수업 코드 템플릿 사용 안내
+
+사용법: 영문 입력 상태의 Java 편집기에서 약어 입력 → F9 → 템플릿 선택 → Enter.
+현재 Eclipse에는 템플릿 전용 단축키 F9가 등록되어 있습니다. Mac에서 미디어 기능이 작동하면 Fn+F9를 누르세요.
+기본 Content Assist: Ctrl+Space. Tab: 다음 수정 칸, Shift+Tab: 이전 수정 칸.
+같은 변수명이 여러 곳에 나오면 연결되어 함께 바뀝니다. 마지막에는 Enter로 편집을 마칩니다.
+현재 단축키는 Eclipse > Settings > General > Keys에서 Content Assist (Template Proposals)로 확인할 수 있습니다.
+템플릿 XML에는 단축키가 포함되지 않으므로 다른 Eclipse에서는 이 명령의 Binding에 F9를 지정하세요.
+
+삽입 위치:
+- 문장: main() 또는 다른 메소드의 중괄호 안.
+- 멤버: 클래스 중괄호 안이지만 main() 등 메소드의 바깥.
+- 클래스: 기존 main 클래스의 마지막 닫는 중괄호 다음.
+- 빈 파일: 아직 클래스 내용이 없는 Java 파일.
+
+프로젝트 이름은 main, OJ 제출용 실행 클래스와 파일 이름은 Main / Main.java입니다.
+OJ 제출 시 Main.java 내용 전체를 사용하세요. package 선언은 넣지 않고 보조 클래스에는 public을 붙이지 않습니다.
+템플릿은 문법 틀이므로 변수명·타입·조건·인자를 문제에 맞게 바꾸어야 합니다.
+Scanner와 컬렉션 등 필요한 import는 템플릿이 자동 추가합니다. 같은 스코프에서 같은 변수명을 중복 선언하지 마세요.
+
+다른 Eclipse로 옮기기:
+Eclipse > Settings(Preferences) > Java > Editor > Templates > Import...
+java-course-templates.xml을 선택하고 Apply and Close.
+문법 약어는 j, 롱(통) 약어는 oj로 시작합니다. 이미 등록한 항목을 다시 Import하면 중복될 수 있으므로 교체 시 기존 사용자 항목을 먼저 제거하세요.
+
+약어 목록
+
+jstart | 1·2장 | 빈 파일의 main 클래스 | 위치: 빈 파일
+빈 Java 파일에서 사용. 파일 이름에 맞춰 클래스 이름이 정해집니다.
+public class ${primary_type_name} {
+	public static void main(String[] args) {
+		${cursor}
+	}
+}
+
+jmain | 2장 | main 메소드 | 위치: 멤버
+클래스 안, 기존 메소드 밖에서 사용. 이미 main()이 있으면 추가하지 마세요.
+public static void main(String[] args) {
+	${cursor}
+}
+
+jout | 2장 | 줄바꿈 출력 | 위치: 문장
+System.out.println(${value:link('0')});${cursor}
+
+jprint | 2장 | 줄바꿈 없는 출력 | 위치: 문장
+System.out.print(${value:link('0')});${cursor}
+
+jprintf | 2장 | 소수점 자리 지정 출력 | 위치: 문장
+%.1f는 소수점 한 자리. 정수는 %d, 문자열은 %s를 사용합니다.
+System.out.printf("%.1f%n", ${value:link('0.0')});${cursor}
+
+jscan | 2장 | Scanner 생성 | 위치: 문장
+scanner는 한 번 생성해 재사용하세요. import는 자동 추가됩니다. 입력을 모두 마치면 scanner.close().
+${imports:import(java.util.Scanner)}Scanner ${scanner} = new Scanner(System.in);
+${cursor}
+
+jint | 2장 | 정수 입력 | 위치: 문장
+jscan을 먼저 사용하세요.
+int ${number} = ${scanner}.nextInt();${cursor}
+
+jdouble | 2장 | 실수 입력 | 위치: 문장
+jscan을 먼저 사용하세요.
+double ${number} = ${scanner}.nextDouble();${cursor}
+
+jword | 2장 | 공백 전까지 문자열 입력 | 위치: 문장
+jscan을 먼저 사용하세요.
+String ${text} = ${scanner}.next();${cursor}
+
+jline | 2장 | 한 줄 입력 | 위치: 문장
+nextInt()/nextDouble()/next() 직후 같은 줄에 남은 개행은 nextLine()으로 먼저 소비해야 다음 줄을 읽습니다.
+String ${text} = ${scanner}.nextLine();${cursor}
+
+jif | 2장 | if 조건문 | 위치: 문장
+if (${condition:link('true')}) {
+	${cursor}
+}
+
+jifelse | 2장 | if-else 조건문 | 위치: 문장
+if (${condition:link('true')}) {
+	${cursor}
+} else {
+	
+}
+
+jswitch | 2장 | switch-case-break | 위치: 문장
+수업의 콜론(:) 형태입니다. case 값은 상수로 바꾸세요.
+switch (${key:link('0')}) {
+case ${caseValue:link('0')}:
+	${cursor}
+	break;
+default:
+	break;
+}
+
+jfor | 3장 | 횟수 지정 for | 위치: 문장
+for (int ${i} = 0; ${i} < ${count:link('5')}; ${i}++) {
+	${cursor}
+}
+
+jwhile | 3장 | while 반복 | 위치: 문장
+조건을 변경하거나 break를 넣어 종료 조건을 작성하세요.
+while (${condition:link('true')}) {
+	${cursor}
+}
+
+jdo | 3장 | do-while 반복 | 위치: 문장
+do {
+	${cursor}
+} while (${condition:link('false')});
+
+jbreak | 3장 | 조건부 break | 위치: 문장
+반복문 안에서 사용합니다.
+if (${condition:link('true')}) {
+	break;
+}${cursor}
+
+jcontinue | 3장 | 조건부 continue | 위치: 문장
+반복문 안에서 사용합니다.
+if (${condition:link('true')}) {
+	continue;
+}${cursor}
+
+jarr | 3장 | 1차원 배열 생성 | 위치: 문장
+${elementType:link('int')}[] ${array} = new ${elementType}[${size:link('5')}];${cursor}
+
+jarrfor | 3장 | 배열 인덱스 순회 | 위치: 문장
+먼저 만든 배열 이름으로 array를 바꾸세요.
+for (int ${i} = 0; ${i} < ${array}.length; ${i}++) {
+	${cursor}
+}
+
+jeach | 3장 | 배열 for-each | 위치: 문장
+기존 배열 이름과 요소 타입을 지정하세요.
+for (${elementType:link('int')} ${value} : ${array}) {
+	${cursor}
+}
+
+jarr2 | 3장 | 2차원 배열 생성과 순회 | 위치: 문장
+${elementType:link('int')}[][] ${matrix} = new ${elementType}[${rows:link('3')}][${cols:link('4')}];
+for (int ${i} = 0; ${i} < ${matrix}.length; ${i}++) {
+	for (int ${j} = 0; ${j} < ${matrix}[${i}].length; ${j}++) {
+		${cursor}
+	}
+}
+
+jtry | 3장 | try-catch-finally | 위치: 문장
+상황에 맞는 예외 타입으로 변경하세요. 빈 catch에 필요한 처리를 작성하세요.
+try {
+	${cursor}
+} catch (${exceptionType:link('NumberFormatException')} ${e}) {
+	// 예외 발생 시 처리
+} finally {
+	// 항상 실행할 처리
+}
+
+jclass | 4장 | 필드·생성자·getter·setter 클래스 | 위치: 클래스
+보조 클래스는 main 클래스의 닫는 중괄호 다음에 삽입하세요. 필드명을 바꾸면 getter/setter 이름도 맞추세요.
+class ${ClassName} {
+	private ${fieldType:link('int')} ${value};
+
+	public ${ClassName}(${fieldType} ${value}) {
+		this.${value} = ${value};
+	}
+
+	public ${fieldType} getValue() {
+		return ${value};
+	}
+
+	public void setValue(${fieldType} ${value}) {
+		this.${value} = ${value};
+	}
+	${cursor}
+}
+
+jctor | 4장 | 매개변수 생성자 | 위치: 멤버
+현재 클래스에 같은 이름과 타입의 필드를 먼저 선언하세요. 생성자 이름은 현재 클래스 이름으로 자동 입력됩니다.
+public ${enclosing_type}(${fieldType:link('int')} ${value}) {
+	this.${value} = ${value};
+	${cursor}
+}
+
+jthis | 4장 | 다른 생성자 호출 | 위치: 멤버
+해당 인자를 받는 생성자가 필요합니다. this()는 생성자의 첫 문장입니다.
+public ${enclosing_type}() {
+	this(${argument:link('0')});
+	${cursor}
+}
+
+jmethod | 4장 | 리턴값 있는 메소드 | 위치: 멤버
+반환 타입과 반환값을 함께 맞추세요.
+public ${returnType:link('int')} ${methodName}(${parameterType:link('int')} ${value}) {
+	${cursor}
+	return ${value};
+}
+
+jstatic | 4장 | static 메소드 | 위치: 멤버
+static 메소드에서는 this를 사용할 수 없습니다.
+public static ${returnType:link('int')} ${methodName}(${parameterType:link('int')} ${value}) {
+	${cursor}
+	return ${value};
+}
+
+jnew | 4장 | 객체 생성 | 위치: 문장
+기존 클래스 이름과 실제 생성자 인자로 바꾸세요. 매개변수가 없으면 arguments를 지우세요.
+${ClassName} ${object} = new ${ClassName}(${arguments});${cursor}
+
+jobjarr | 4장 | 객체 배열과 각 원소 생성 | 위치: 문장
+new ClassName[size]는 참조 배열만 만듭니다. 각 원소의 생성자 인자를 맞추세요.
+${ClassName}[] ${objects} = new ${ClassName}[${size:link('5')}];
+for (int ${i} = 0; ${i} < ${objects}.length; ${i}++) {
+	${objects}[${i}] = new ${ClassName}(${arguments});
+	${cursor}
+}
+
+jextends | 5장 | 상속과 super 생성자 | 위치: 클래스
+기존 부모 클래스와 부모 생성자 시그니처에 맞추세요. 보조 클래스 위치에 삽입합니다.
+class ${Child} extends ${Parent} {
+	public ${Child}(${parameterType:link('int')} ${value}) {
+		super(${value});
+		${cursor}
+	}
+}
+
+joverride | 5장 | void 메소드 오버라이딩 | 위치: 멤버
+부모/인터페이스의 실제 메소드 이름·매개변수·반환 타입과 일치해야 합니다.
+@Override
+public void ${methodName}() {
+	${cursor}
+}
+
+jcast | 5장 | instanceof 확인 후 다운캐스팅 | 위치: 문장
+object와 Child를 기존 변수와 클래스 이름으로 바꾸세요.
+if (${object} instanceof ${Child}) {
+	${Child} ${child} = (${Child}) ${object};
+	${cursor}
+}
+
+jabstract | 5장 | 추상 클래스 | 위치: 클래스
+클래스 선언 위치에 삽입. 추상 클래스는 직접 new 할 수 없습니다.
+abstract class ${Base} {
+	public abstract void ${methodName}();
+	${cursor}
+}
+
+jinterface | 5장 | 인터페이스 | 위치: 클래스
+클래스 선언 위치에 삽입합니다.
+interface ${InterfaceName} {
+	void ${methodName}();
+	${cursor}
+}
+
+jimplements | 5장 | 인터페이스 구현 클래스 | 위치: 클래스
+기존 인터페이스의 모든 추상 메소드를 public으로 구현하세요.
+class ${ClassName} implements ${InterfaceName} {
+	@Override
+	public void ${methodName}() {
+		${cursor}
+	}
+}
+
+jtostring | 6장 | toString 재정의 | 위치: 멤버
+@Override
+public String toString() {
+	return ${expression:link('""')};
+}${cursor}
+
+jparse | 6장 | 문자열을 정수로 변환 | 위치: 문장
+숫자 형식이 아니면 NumberFormatException이 발생합니다.
+int ${number} = Integer.parseInt(${text:link('"123"')});${cursor}
+
+jequals | 6장 | 문자열 내용 비교 | 위치: 문장
+String의 내용 비교에 사용. 왼쪽 값이 null이면 예외가 발생하므로 확인하세요.
+if (${text:link('"sample"')}.equals(${otherText:link('"sample"')})) {
+	${cursor}
+}
+
+jsplit | 6장 | 문자열 분리 | 위치: 문장
+split의 구분자는 정규식입니다. 점(.) 같은 문자는 이스케이프가 필요합니다.
+String[] ${parts} = ${text:link('"a,b"')}.split(${delimiter:link('","')});
+${cursor}
+
+jbuffer | 6장 | StringBuffer 생성과 추가 | 위치: 문장
+StringBuffer ${buffer} = new StringBuffer();
+${buffer}.append(${text:link('""')});
+${cursor}
+
+jtoken | 6장 | StringTokenizer 순회 | 위치: 문장
+${imports:import(java.util.StringTokenizer)}StringTokenizer ${tokenizer} = new StringTokenizer(${text:link('"a/b"')}, ${delimiter:link('"/"')});
+while (${tokenizer}.hasMoreTokens()) {
+	String ${token} = ${tokenizer}.nextToken();
+	${cursor}
+}
+
+jrandom | 6장 | 0 이상 bound 미만 난수 | 위치: 문장
+bound는 양의 정수. 1~10은 bound=10으로 두고 결과에 +1을 더하세요.
+int ${number} = (int) (Math.random() * ${bound:link('10')});${cursor}
+
+jcalendar | 6장 | Calendar 현재 날짜 | 위치: 문장
+Calendar.MONTH는 0부터 시작하므로 출력할 달에는 +1을 합니다.
+${imports:import(java.util.Calendar)}Calendar ${now} = Calendar.getInstance();
+int ${year} = ${now}.get(Calendar.YEAR);
+int ${month} = ${now}.get(Calendar.MONTH) + 1;
+int ${day} = ${now}.get(Calendar.DAY_OF_MONTH);
+${cursor}
+
+jlist | 7장 | ArrayList 생성 | 위치: 문장
+기본 타입 int 대신 Integer처럼 래퍼 타입을 사용하세요.
+${imports:import(java.util.ArrayList)}ArrayList<${elementType:link('String','Integer','Double')}> ${list} = new ArrayList<>();
+${cursor}
+
+jvector | 7장 | Vector 생성 | 위치: 문장
+${imports:import(java.util.Vector)}Vector<${elementType:link('Integer','String','Double')}> ${vector} = new Vector<>();
+${cursor}
+
+jlinked | 7장 | LinkedList 생성 | 위치: 문장
+${imports:import(java.util.LinkedList)}LinkedList<${elementType:link('String','Integer')}> ${list} = new LinkedList<>();
+${cursor}
+
+jlistfor | 7장 | 리스트 인덱스 순회 | 위치: 문장
+list는 기존 ArrayList/Vector/LinkedList 이름으로 바꾸세요. 요소 타입도 일치시킵니다.
+for (int ${i} = 0; ${i} < ${list}.size(); ${i}++) {
+	${elementType:link('String','Integer')} ${value} = ${list}.get(${i});
+	${cursor}
+}
+
+jiter | 7장 | Iterator 순회 | 위치: 문장
+list는 기존 컬렉션 이름으로 바꾸세요.
+${imports:import(java.util.Iterator)}Iterator<${elementType:link('String','Integer')}> ${iterator} = ${list}.iterator();
+while (${iterator}.hasNext()) {
+	${elementType} ${value} = ${iterator}.next();
+	${cursor}
+}
+
+jmap | 7장 | HashMap 생성 | 위치: 문장
+map.put(key,value)로 저장, map.get(key)로 조회합니다. 없는 키의 get 결과는 null입니다.
+${imports:import(java.util.HashMap)}HashMap<${keyType:link('String','Integer')}, ${valueType:link('Integer','String')}> ${map} = new HashMap<>();
+${cursor}
+
+jmapfor | 7장 | HashMap 키 순회 | 위치: 문장
+기존 map 이름 및 키/값 타입을 맞추세요. HashMap의 순서는 보장되지 않습니다.
+for (${keyType:link('String','Integer')} ${key} : ${map}.keySet()) {
+	${valueType:link('Integer','String')} ${value} = ${map}.get(${key});
+	${cursor}
+}
+
+jset | 7장 | HashSet 생성 | 위치: 문장
+중복을 허용하지 않고 순서를 보장하지 않습니다.
+${imports:import(java.util.Set,java.util.HashSet)}Set<${elementType:link('String','Integer')}> ${set} = new HashSet<>();
+${cursor}
+
+jsort | 7장 | 컬렉션 오름차순 정렬 | 위치: 문장
+기존 리스트 이름을 지정하세요. 배열에는 사용할 수 없습니다.
+${imports:import(java.util.Collections)}Collections.sort(${list});${cursor}
+
+jgeneric | 7장 | 제네릭 클래스 | 위치: 클래스
+클래스 선언 위치에 삽입. 예: Box<String> box = new Box<>();
+class ${Box}<T> {
+	private T ${value};
+
+	public void set(T ${value}) {
+		this.${value} = ${value};
+	}
+
+	public T get() {
+		return ${value};
+	}
+	${cursor}
+}
+
+jgenericmethod | 7장 | 제네릭 메소드 | 위치: 멤버
+public static <T> T ${methodName}(T ${value}) {
+	${cursor}
+	return ${value};
+}
+
+문제 표현으로 찾는 템플릿 설명
+
+jstart
+  용도: OJ 프로그램의 Main 클래스와 시작 틀 만들기
+  문제 표현: 프로그램을 작성하라 / Main 클래스를 작성하라 → 이 템플릿 사용
+
+jmain
+  용도: 프로그램 실행 시작 메소드 만들기
+  문제 표현: 다음 main()을 실행하라 / 실행 결과를 출력하라 → 이 템플릿 사용
+
+jout
+  용도: 값을 출력한 뒤 줄바꿈하기
+  문제 표현: 한 줄에 출력하라 / 각 결과를 줄마다 출력하라 → 이 템플릿 사용
+
+jprint
+  용도: 줄바꿈 없이 이어서 출력하기
+  문제 표현: 같은 줄에 출력하라 / 공백으로 구분하여 출력하라 → 이 템플릿 사용
+
+jprintf
+  용도: 소수점 자릿수와 출력 형식 맞추기
+  문제 표현: 소수점 아래 첫째 자리까지 / 형식에 맞춰 출력하라 → 이 템플릿 사용
+
+jscan
+  용도: 키보드·표준 입력을 받을 Scanner 만들기
+  문제 표현: 입력받아라 / 정수 또는 문자열이 주어진다 → 이 템플릿 사용
+
+jint
+  용도: Scanner로 정수 한 개 읽기
+  문제 표현: 정수 N을 입력받아라 / 나이·개수를 입력받아라 → 이 템플릿 사용
+
+jdouble
+  용도: Scanner로 실수 한 개 읽기
+  문제 표현: 실수를 입력받아라 / 체중·반지름을 실수로 입력받아라 → 이 템플릿 사용
+
+jword
+  용도: 공백으로 구분된 문자열 한 개 읽기
+  문제 표현: 이름·단어를 입력받아라 / 공백 없는 문자열이 주어진다 → 이 템플릿 사용
+
+jline
+  용도: 공백을 포함한 한 줄 전체 읽기
+  문제 표현: 문장 한 줄을 입력받아라 / 공백을 포함한 문자열 → 이 템플릿 사용
+
+jif
+  용도: 조건을 만족할 때만 작업하기
+  문제 표현: 만약 ~이면 / ~인 경우에만 실행하라 → 이 템플릿 사용
+
+jifelse
+  용도: 조건에 따라 두 작업 중 하나 실행하기
+  문제 표현: ~이면 합격, 아니면 불합격 / 조건에 따라 나누어라 → 이 템플릿 사용
+
+jswitch
+  용도: 정해진 값별로 작업 분기하기
+  문제 표현: 메뉴 번호·등급·연산 기호에 따라 / switch문을 사용하라 → 이 템플릿 사용
+
+jfor
+  용도: 정해진 횟수만큼 반복하기
+  문제 표현: N번 반복하라 / N개의 값을 입력받아라 / 0부터 N-1까지 → 이 템플릿 사용
+
+jwhile
+  용도: 종료 조건을 만날 때까지 반복하기
+  문제 표현: -1이 입력될 때까지 / exit을 입력하면 종료 / 반복 입력받아라 → 이 템플릿 사용
+
+jdo
+  용도: 작업을 최소 한 번 실행한 뒤 반복 판단하기
+  문제 표현: 적어도 한 번 실행하라 / do-while문을 사용하라 → 이 템플릿 사용
+
+jbreak
+  용도: 조건을 만나 반복문을 끝내기
+  문제 표현: -1을 입력하면 종료 / 찾으면 반복을 중단하라 → 이 템플릿 사용
+
+jcontinue
+  용도: 현재 회차를 건너뛰고 다음 반복으로 가기
+  문제 표현: 음수는 제외하라 / 조건에 맞지 않으면 건너뛰어라 → 이 템플릿 사용
+
+jarr
+  용도: 고정 개수의 값을 저장할 배열 만들기
+  문제 표현: 정수 N개를 배열에 저장하라 / 크기가 N인 배열 → 이 템플릿 사용
+
+jarrfor
+  용도: 배열의 인덱스로 모든 원소 처리하기
+  문제 표현: 배열의 모든 원소를 순서대로 / 각 원소를 변경하라 → 이 템플릿 사용
+
+jeach
+  용도: 배열의 값을 하나씩 꺼내 순회하기
+  문제 표현: 배열의 모든 값을 출력하라 / for-each문을 사용하라 → 이 템플릿 사용
+
+jarr2
+  용도: 행·열로 된 2차원 배열 만들고 순회하기
+  문제 표현: 행렬 / N행 M열 / 2차원 배열의 모든 원소 → 이 템플릿 사용
+
+jtry
+  용도: 예외 발생 시 처리하고 정리 작업하기
+  문제 표현: 예외를 처리하라 / 잘못된 입력에도 종료되지 않게 / try-catch → 이 템플릿 사용
+
+jclass
+  용도: 필드·생성자·getter·setter가 있는 보조 클래스 만들기
+  문제 표현: ~클래스를 작성하라 / 멤버 변수를 private으로 선언하라 → 이 템플릿 사용
+
+jctor
+  용도: 객체를 생성할 때 전달값으로 필드 초기화하기
+  문제 표현: 생성자를 작성하라 / 생성자로 멤버 변수를 초기화하라 → 이 템플릿 사용
+
+jthis
+  용도: 같은 클래스의 다른 생성자 호출하기
+  문제 표현: this()를 이용하라 / 기본 생성자에서 다른 생성자를 호출하라 → 이 템플릿 사용
+
+jmethod
+  용도: 입력값을 받아 결과를 반환하는 메소드 만들기
+  문제 표현: ~메소드를 작성하라 / 계산한 값을 리턴하라 → 이 템플릿 사용
+
+jstatic
+  용도: 객체 생성 없이 호출할 static 메소드 만들기
+  문제 표현: static 메소드 / 클래스 이름으로 호출 / 전역 함수처럼 사용 → 이 템플릿 사용
+
+jnew
+  용도: 생성자를 호출해 객체 한 개 만들기
+  문제 표현: 객체를 생성하라 / 인스턴스를 생성하라 / new로 생성하라 → 이 템플릿 사용
+
+jobjarr
+  용도: 객체 배열을 만들고 각 원소의 객체 생성하기
+  문제 표현: 객체 N개를 배열에 저장하라 / 객체 배열을 생성하라 → 이 템플릿 사용
+
+jextends
+  용도: 부모 클래스를 상속하고 부모 생성자 호출하기
+  문제 표현: ~를 상속받는 클래스를 작성하라 / super()를 이용하라 → 이 템플릿 사용
+
+joverride
+  용도: 부모의 void 메소드를 자식에서 재정의하기
+  문제 표현: 메소드를 오버라이딩하라 / 상속받은 동작을 재정의하라 → 이 템플릿 사용
+
+jcast
+  용도: 실제 객체 타입을 확인한 후 다운캐스팅하기
+  문제 표현: instanceof로 구분하라 / 자식 타입으로 변환하라 → 이 템플릿 사용
+
+jabstract
+  용도: 구현을 자식에게 맡기는 추상 클래스 선언하기
+  문제 표현: 추상 클래스 / abstract 메소드를 선언하라 → 이 템플릿 사용
+
+jinterface
+  용도: 클래스가 구현할 메소드 규격 선언하기
+  문제 표현: 인터페이스를 작성하라 / interface를 선언하라 → 이 템플릿 사용
+
+jimplements
+  용도: 인터페이스를 구현하는 클래스 만들기
+  문제 표현: ~인터페이스를 구현하라 / implements를 사용하라 → 이 템플릿 사용
+
+jtostring
+  용도: 객체를 설명하는 문자열 반환하기
+  문제 표현: toString()을 재정의하라 / 객체 출력 시 지정한 문자열 → 이 템플릿 사용
+
+jparse
+  용도: 숫자 문자열을 int 정수로 바꾸기
+  문제 표현: 문자열을 정수로 변환하라 / Integer.parseInt를 사용하라 → 이 템플릿 사용
+
+jequals
+  용도: 두 문자열의 내용이 같은지 비교하기
+  문제 표현: 입력한 단어가 exit이면 / 두 문자열이 같으면 → 이 템플릿 사용
+
+jsplit
+  용도: 문자열을 구분자 기준으로 나눠 배열 만들기
+  문제 표현: 쉼표로 분리하라 / 구분자로 나누어라 / split을 사용하라 → 이 템플릿 사용
+
+jbuffer
+  용도: 수정 가능한 문자열을 만들고 내용 덧붙이기
+  문제 표현: StringBuffer를 사용하라 / 문자열을 추가·삽입·삭제하라 → 이 템플릿 사용
+
+jtoken
+  용도: StringTokenizer로 토큰을 하나씩 꺼내기
+  문제 표현: 토큰으로 분리하라 / StringTokenizer를 이용하라 → 이 템플릿 사용
+
+jrandom
+  용도: 0 이상 지정 범위 미만의 임의 정수 만들기
+  문제 표현: 난수를 생성하라 / 무작위 정수를 구하라 → 이 템플릿 사용
+
+jcalendar
+  용도: Calendar로 현재 연·월·일 읽기
+  문제 표현: 현재 날짜를 구하라 / Calendar 클래스를 사용하라 → 이 템플릿 사용
+
+jlist
+  용도: 크기를 바꿀 수 있는 ArrayList 만들기
+  문제 표현: 입력 개수에 따라 저장하라 / ArrayList에 저장하라 → 이 템플릿 사용
+
+jvector
+  용도: 크기를 바꿀 수 있는 Vector 만들기
+  문제 표현: Vector 컬렉션을 사용하라 / 벡터에 정수를 저장하라 → 이 템플릿 사용
+
+jlinked
+  용도: LinkedList 만들기
+  문제 표현: LinkedList를 사용하라 / 연결 리스트에 저장하라 → 이 템플릿 사용
+
+jlistfor
+  용도: 리스트의 인덱스로 모든 요소 읽기
+  문제 표현: 리스트의 모든 요소를 출력하라 / i번째 요소를 가져와라 → 이 템플릿 사용
+
+jiter
+  용도: Iterator로 컬렉션 요소 순회하기
+  문제 표현: Iterator를 사용하라 / 반복자로 순차 검색하라 → 이 템플릿 사용
+
+jmap
+  용도: 키로 값을 저장·조회할 HashMap 만들기
+  문제 표현: 이름으로 점수 검색 / 영단어로 뜻 검색 / 키와 값의 쌍 → 이 템플릿 사용
+
+jmapfor
+  용도: HashMap의 모든 키와 대응값 순회하기
+  문제 표현: 맵에 저장된 모든 항목을 출력하라 / keySet()으로 순회하라 → 이 템플릿 사용
+
+jset
+  용도: 중복을 허용하지 않는 집합 만들기
+  문제 표현: 중복을 제거하라 / 서로 다른 값만 저장하라 / HashSet → 이 템플릿 사용
+
+jsort
+  용도: 리스트 요소를 오름차순으로 정렬하기
+  문제 표현: 오름차순으로 정렬하라 / 사전순으로 나열하라 → 이 템플릿 사용
+
+jgeneric
+  용도: 여러 자료형을 받는 제네릭 클래스 만들기
+  문제 표현: 제네릭 클래스를 작성하라 / 타입 매개변수 T를 사용하라 → 이 템플릿 사용
+
+jgenericmethod
+  용도: 여러 자료형에 공통인 제네릭 메소드 만들기
+  문제 표현: 제네릭 메소드를 작성하라 / <T> 메소드를 정의하라 → 이 템플릿 사용
+
+
+템플릿 설명 주석
+모든 수업 템플릿에는 // 용도: 와 // 문제 표현: 주석 두 줄이 함께 삽입됩니다.
+주석은 실행 결과에 영향을 주지 않습니다. OJ 제출 시에도 코드 설명 주석으로 남겨둘 수 있습니다.

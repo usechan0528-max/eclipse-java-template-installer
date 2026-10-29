@@ -1,0 +1,8 @@
+Validation performed with Java 17 on macOS; Windows .cmd launchers were checked for CRLF and package paths, not executed on Windows.
+
+PASS: fresh workspace installed all 81 templates with Korean comments and all original code intact.
+PASS: repeat installation did not create duplicates.
+PASS: other templates, settings and unrelated key bindings preserved; duplicate package names replaced; F9 mapped correctly.
+PASS: restore returned both preference files byte-for-byte to their original contents.
+PASS: restore removes installer-created preference files when originals did not exist.
+PASS: invalid workspace rejected without creating settings.

@@ -1,0 +1,1147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<templates>
+  <template autoinsert="true" context="java" deleted="false" description="용도: OJ 프로그램의 Main 클래스와 시작 틀 만들기 | 문제 표현: 프로그램을 작성하라 / Main 클래스를 작성하라 → 사용 [수업 1·2장] | 삽입 위치: 빈 파일 전체" enabled="true" name="jstart">// 삽입 위치: 빈 파일 전체
+// 용도: OJ 프로그램의 Main 클래스와 시작 틀 만들기
+// 문제 표현: 프로그램을 작성하라 / Main 클래스를 작성하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+public class ${primary_type_name} {
+	public static void main(String[] args) {
+		${cursor}
+	}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 프로그램 실행 시작 메소드 만들기 | 문제 표현: 다음 main()을 실행하라 / 실행 결과를 출력하라 → 사용 [수업 2장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="jmain">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 프로그램 실행 시작 메소드 만들기
+// 문제 표현: 다음 main()을 실행하라 / 실행 결과를 출력하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+public static void main(String[] args) {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 값을 출력한 뒤 줄바꿈하기 | 문제 표현: 한 줄에 출력하라 / 각 결과를 줄마다 출력하라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jout">// 삽입 위치: main() 등 메소드 안
+// 용도: 값을 출력한 뒤 줄바꿈하기
+// 문제 표현: 한 줄에 출력하라 / 각 결과를 줄마다 출력하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+System.out.println(${value:link('0')});${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 줄바꿈 없이 이어서 출력하기 | 문제 표현: 같은 줄에 출력하라 / 공백으로 구분하여 출력하라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jprint">// 삽입 위치: main() 등 메소드 안
+// 용도: 줄바꿈 없이 이어서 출력하기
+// 문제 표현: 같은 줄에 출력하라 / 공백으로 구분하여 출력하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+System.out.print(${value:link('0')});${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 소수점 자릿수와 출력 형식 맞추기 | 문제 표현: 소수점 아래 첫째 자리까지 / 형식에 맞춰 출력하라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jprintf">// 삽입 위치: main() 등 메소드 안
+// 용도: 소수점 자릿수와 출력 형식 맞추기
+// 문제 표현: 소수점 아래 첫째 자리까지 / 형식에 맞춰 출력하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+System.out.printf("%.1f%n", ${value:link('0.0')});${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 키보드·표준 입력을 받을 Scanner 만들기 | 문제 표현: 입력받아라 / 정수 또는 문자열이 주어진다 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jscan">// 삽입 위치: main() 등 메소드 안
+// 용도: 키보드·표준 입력을 받을 Scanner 만들기
+// 문제 표현: 입력받아라 / 정수 또는 문자열이 주어진다 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.Scanner)}Scanner ${scanner} = new Scanner(System.in);
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: Scanner로 정수 한 개 읽기 | 문제 표현: 정수 N을 입력받아라 / 나이·개수를 입력받아라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jint">// 삽입 위치: main() 등 메소드 안
+// 용도: Scanner로 정수 한 개 읽기
+// 문제 표현: 정수 N을 입력받아라 / 나이·개수를 입력받아라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+int ${number} = ${scanner}.nextInt();${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: Scanner로 실수 한 개 읽기 | 문제 표현: 실수를 입력받아라 / 체중·반지름을 실수로 입력받아라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jdouble">// 삽입 위치: main() 등 메소드 안
+// 용도: Scanner로 실수 한 개 읽기
+// 문제 표현: 실수를 입력받아라 / 체중·반지름을 실수로 입력받아라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+double ${number} = ${scanner}.nextDouble();${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 공백으로 구분된 문자열 한 개 읽기 | 문제 표현: 이름·단어를 입력받아라 / 공백 없는 문자열이 주어진다 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jword">// 삽입 위치: main() 등 메소드 안
+// 용도: 공백으로 구분된 문자열 한 개 읽기
+// 문제 표현: 이름·단어를 입력받아라 / 공백 없는 문자열이 주어진다 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+String ${text} = ${scanner}.next();${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 공백을 포함한 한 줄 전체 읽기 | 문제 표현: 문장 한 줄을 입력받아라 / 공백을 포함한 문자열 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jline">// 삽입 위치: main() 등 메소드 안
+// 용도: 공백을 포함한 한 줄 전체 읽기
+// 문제 표현: 문장 한 줄을 입력받아라 / 공백을 포함한 문자열 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+String ${text} = ${scanner}.nextLine();${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 조건을 만족할 때만 작업하기 | 문제 표현: 만약 ~이면 / ~인 경우에만 실행하라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jif">// 삽입 위치: main() 등 메소드 안
+// 용도: 조건을 만족할 때만 작업하기
+// 문제 표현: 만약 ~이면 / ~인 경우에만 실행하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+if (${condition:link('true')}) {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 조건에 따라 두 작업 중 하나 실행하기 | 문제 표현: ~이면 합격, 아니면 불합격 / 조건에 따라 나누어라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jifelse">// 삽입 위치: main() 등 메소드 안
+// 용도: 조건에 따라 두 작업 중 하나 실행하기
+// 문제 표현: ~이면 합격, 아니면 불합격 / 조건에 따라 나누어라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+if (${condition:link('true')}) {
+	${cursor}
+} else {
+	
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 정해진 값별로 작업 분기하기 | 문제 표현: 메뉴 번호·등급·연산 기호에 따라 / switch문을 사용하라 → 사용 [수업 2장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jswitch">// 삽입 위치: main() 등 메소드 안
+// 용도: 정해진 값별로 작업 분기하기
+// 문제 표현: 메뉴 번호·등급·연산 기호에 따라 / switch문을 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+switch (${key:link('0')}) {
+case ${caseValue:link('0')}:
+	${cursor}
+	break;
+default:
+	break;
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 정해진 횟수만큼 반복하기 | 문제 표현: N번 반복하라 / N개의 값을 입력받아라 / 0부터 N-1까지 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jfor">// 삽입 위치: main() 등 메소드 안
+// 용도: 정해진 횟수만큼 반복하기
+// 문제 표현: N번 반복하라 / N개의 값을 입력받아라 / 0부터 N-1까지 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+for (int ${i} = 0; ${i} &lt; ${count:link('5')}; ${i}++) {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 종료 조건을 만날 때까지 반복하기 | 문제 표현: -1이 입력될 때까지 / exit을 입력하면 종료 / 반복 입력받아라 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jwhile">// 삽입 위치: main() 등 메소드 안
+// 용도: 종료 조건을 만날 때까지 반복하기
+// 문제 표현: -1이 입력될 때까지 / exit을 입력하면 종료 / 반복 입력받아라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+while (${condition:link('true')}) {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 작업을 최소 한 번 실행한 뒤 반복 판단하기 | 문제 표현: 적어도 한 번 실행하라 / do-while문을 사용하라 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jdo">// 삽입 위치: main() 등 메소드 안
+// 용도: 작업을 최소 한 번 실행한 뒤 반복 판단하기
+// 문제 표현: 적어도 한 번 실행하라 / do-while문을 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+do {
+	${cursor}
+} while (${condition:link('false')});</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 조건을 만나 반복문을 끝내기 | 문제 표현: -1을 입력하면 종료 / 찾으면 반복을 중단하라 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jbreak">// 삽입 위치: main() 등 메소드 안
+// 용도: 조건을 만나 반복문을 끝내기
+// 문제 표현: -1을 입력하면 종료 / 찾으면 반복을 중단하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+if (${condition:link('true')}) {
+	break;
+}${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 현재 회차를 건너뛰고 다음 반복으로 가기 | 문제 표현: 음수는 제외하라 / 조건에 맞지 않으면 건너뛰어라 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jcontinue">// 삽입 위치: main() 등 메소드 안
+// 용도: 현재 회차를 건너뛰고 다음 반복으로 가기
+// 문제 표현: 음수는 제외하라 / 조건에 맞지 않으면 건너뛰어라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+if (${condition:link('true')}) {
+	continue;
+}${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 고정 개수의 값을 저장할 배열 만들기 | 문제 표현: 정수 N개를 배열에 저장하라 / 크기가 N인 배열 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jarr">// 삽입 위치: main() 등 메소드 안
+// 용도: 고정 개수의 값을 저장할 배열 만들기
+// 문제 표현: 정수 N개를 배열에 저장하라 / 크기가 N인 배열 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${elementType:link('int')}[] ${array} = new ${elementType}[${size:link('5')}];${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 배열의 인덱스로 모든 원소 처리하기 | 문제 표현: 배열의 모든 원소를 순서대로 / 각 원소를 변경하라 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jarrfor">// 삽입 위치: main() 등 메소드 안
+// 용도: 배열의 인덱스로 모든 원소 처리하기
+// 문제 표현: 배열의 모든 원소를 순서대로 / 각 원소를 변경하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+for (int ${i} = 0; ${i} &lt; ${array}.length; ${i}++) {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 배열의 값을 하나씩 꺼내 순회하기 | 문제 표현: 배열의 모든 값을 출력하라 / for-each문을 사용하라 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jeach">// 삽입 위치: main() 등 메소드 안
+// 용도: 배열의 값을 하나씩 꺼내 순회하기
+// 문제 표현: 배열의 모든 값을 출력하라 / for-each문을 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+for (${elementType:link('int')} ${value} : ${array}) {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 행·열로 된 2차원 배열 만들고 순회하기 | 문제 표현: 행렬 / N행 M열 / 2차원 배열의 모든 원소 → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jarr2">// 삽입 위치: main() 등 메소드 안
+// 용도: 행·열로 된 2차원 배열 만들고 순회하기
+// 문제 표현: 행렬 / N행 M열 / 2차원 배열의 모든 원소 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${elementType:link('int')}[][] ${matrix} = new ${elementType}[${rows:link('3')}][${cols:link('4')}];
+for (int ${i} = 0; ${i} &lt; ${matrix}.length; ${i}++) {
+	for (int ${j} = 0; ${j} &lt; ${matrix}[${i}].length; ${j}++) {
+		${cursor}
+	}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 예외 발생 시 처리하고 정리 작업하기 | 문제 표현: 예외를 처리하라 / 잘못된 입력에도 종료되지 않게 / try-catch → 사용 [수업 3장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jtry">// 삽입 위치: main() 등 메소드 안
+// 용도: 예외 발생 시 처리하고 정리 작업하기
+// 문제 표현: 예외를 처리하라 / 잘못된 입력에도 종료되지 않게 / try-catch → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+try {
+	${cursor}
+} catch (${exceptionType:link('NumberFormatException')} ${e}) {
+	// 예외 발생 시 처리
+} finally {
+	// 항상 실행할 처리
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 필드·생성자·getter·setter가 있는 보조 클래스 만들기 | 문제 표현: ~클래스를 작성하라 / 멤버 변수를 private으로 선언하라 → 사용 [수업 4장] | 삽입 위치: 클래스 선언 위치" enabled="true" name="jclass">// 삽입 위치: 클래스 선언 위치
+// 용도: 필드·생성자·getter·setter가 있는 보조 클래스 만들기
+// 문제 표현: ~클래스를 작성하라 / 멤버 변수를 private으로 선언하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+class ${ClassName} {
+	private ${fieldType:link('int')} ${value};
+
+	public ${ClassName}(${fieldType} ${value}) {
+		this.${value} = ${value};
+	}
+
+	public ${fieldType} getValue() {
+		return ${value};
+	}
+
+	public void setValue(${fieldType} ${value}) {
+		this.${value} = ${value};
+	}
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 객체를 생성할 때 전달값으로 필드 초기화하기 | 문제 표현: 생성자를 작성하라 / 생성자로 멤버 변수를 초기화하라 → 사용 [수업 4장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="jctor">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 객체를 생성할 때 전달값으로 필드 초기화하기
+// 문제 표현: 생성자를 작성하라 / 생성자로 멤버 변수를 초기화하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+public ${enclosing_type}(${fieldType:link('int')} ${value}) {
+	this.${value} = ${value};
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 같은 클래스의 다른 생성자 호출하기 | 문제 표현: this()를 이용하라 / 기본 생성자에서 다른 생성자를 호출하라 → 사용 [수업 4장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="jthis">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 같은 클래스의 다른 생성자 호출하기
+// 문제 표현: this()를 이용하라 / 기본 생성자에서 다른 생성자를 호출하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+public ${enclosing_type}() {
+	this(${argument:link('0')});
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 입력값을 받아 결과를 반환하는 메소드 만들기 | 문제 표현: ~메소드를 작성하라 / 계산한 값을 리턴하라 → 사용 [수업 4장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="jmethod">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 입력값을 받아 결과를 반환하는 메소드 만들기
+// 문제 표현: ~메소드를 작성하라 / 계산한 값을 리턴하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+public ${returnType:link('int')} ${methodName}(${parameterType:link('int')} ${value}) {
+	${cursor}
+	return ${value};
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 객체 생성 없이 호출할 static 메소드 만들기 | 문제 표현: static 메소드 / 클래스 이름으로 호출 / 전역 함수처럼 사용 → 사용 [수업 4장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="jstatic">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 객체 생성 없이 호출할 static 메소드 만들기
+// 문제 표현: static 메소드 / 클래스 이름으로 호출 / 전역 함수처럼 사용 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+public static ${returnType:link('int')} ${methodName}(${parameterType:link('int')} ${value}) {
+	${cursor}
+	return ${value};
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 생성자를 호출해 객체 한 개 만들기 | 문제 표현: 객체를 생성하라 / 인스턴스를 생성하라 / new로 생성하라 → 사용 [수업 4장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jnew">// 삽입 위치: main() 등 메소드 안
+// 용도: 생성자를 호출해 객체 한 개 만들기
+// 문제 표현: 객체를 생성하라 / 인스턴스를 생성하라 / new로 생성하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${ClassName} ${object} = new ${ClassName}(${arguments});${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 객체 배열을 만들고 각 원소의 객체 생성하기 | 문제 표현: 객체 N개를 배열에 저장하라 / 객체 배열을 생성하라 → 사용 [수업 4장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jobjarr">// 삽입 위치: main() 등 메소드 안
+// 용도: 객체 배열을 만들고 각 원소의 객체 생성하기
+// 문제 표현: 객체 N개를 배열에 저장하라 / 객체 배열을 생성하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${ClassName}[] ${objects} = new ${ClassName}[${size:link('5')}];
+for (int ${i} = 0; ${i} &lt; ${objects}.length; ${i}++) {
+	${objects}[${i}] = new ${ClassName}(${arguments});
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 부모 클래스를 상속하고 부모 생성자 호출하기 | 문제 표현: ~를 상속받는 클래스를 작성하라 / super()를 이용하라 → 사용 [수업 5장] | 삽입 위치: 클래스 선언 위치" enabled="true" name="jextends">// 삽입 위치: 클래스 선언 위치
+// 용도: 부모 클래스를 상속하고 부모 생성자 호출하기
+// 문제 표현: ~를 상속받는 클래스를 작성하라 / super()를 이용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+class ${Child} extends ${Parent} {
+	public ${Child}(${parameterType:link('int')} ${value}) {
+		super(${value});
+		${cursor}
+	}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 부모의 void 메소드를 자식에서 재정의하기 | 문제 표현: 메소드를 오버라이딩하라 / 상속받은 동작을 재정의하라 → 사용 [수업 5장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="joverride">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 부모의 void 메소드를 자식에서 재정의하기
+// 문제 표현: 메소드를 오버라이딩하라 / 상속받은 동작을 재정의하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+@Override
+public void ${methodName}() {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 실제 객체 타입을 확인한 후 다운캐스팅하기 | 문제 표현: instanceof로 구분하라 / 자식 타입으로 변환하라 → 사용 [수업 5장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jcast">// 삽입 위치: main() 등 메소드 안
+// 용도: 실제 객체 타입을 확인한 후 다운캐스팅하기
+// 문제 표현: instanceof로 구분하라 / 자식 타입으로 변환하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+if (${object} instanceof ${Child}) {
+	${Child} ${child} = (${Child}) ${object};
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 구현을 자식에게 맡기는 추상 클래스 선언하기 | 문제 표현: 추상 클래스 / abstract 메소드를 선언하라 → 사용 [수업 5장] | 삽입 위치: 클래스 선언 위치" enabled="true" name="jabstract">// 삽입 위치: 클래스 선언 위치
+// 용도: 구현을 자식에게 맡기는 추상 클래스 선언하기
+// 문제 표현: 추상 클래스 / abstract 메소드를 선언하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+abstract class ${Base} {
+	public abstract void ${methodName}();
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 클래스가 구현할 메소드 규격 선언하기 | 문제 표현: 인터페이스를 작성하라 / interface를 선언하라 → 사용 [수업 5장] | 삽입 위치: 클래스 선언 위치" enabled="true" name="jinterface">// 삽입 위치: 클래스 선언 위치
+// 용도: 클래스가 구현할 메소드 규격 선언하기
+// 문제 표현: 인터페이스를 작성하라 / interface를 선언하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+interface ${InterfaceName} {
+	void ${methodName}();
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 인터페이스를 구현하는 클래스 만들기 | 문제 표현: ~인터페이스를 구현하라 / implements를 사용하라 → 사용 [수업 5장] | 삽입 위치: 클래스 선언 위치" enabled="true" name="jimplements">// 삽입 위치: 클래스 선언 위치
+// 용도: 인터페이스를 구현하는 클래스 만들기
+// 문제 표현: ~인터페이스를 구현하라 / implements를 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+class ${ClassName} implements ${InterfaceName} {
+	@Override
+	public void ${methodName}() {
+		${cursor}
+	}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 객체를 설명하는 문자열 반환하기 | 문제 표현: toString()을 재정의하라 / 객체 출력 시 지정한 문자열 → 사용 [수업 6장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="jtostring">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 객체를 설명하는 문자열 반환하기
+// 문제 표현: toString()을 재정의하라 / 객체 출력 시 지정한 문자열 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+@Override
+public String toString() {
+	return ${expression:link('""')};
+}${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 숫자 문자열을 int 정수로 바꾸기 | 문제 표현: 문자열을 정수로 변환하라 / Integer.parseInt를 사용하라 → 사용 [수업 6장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jparse">// 삽입 위치: main() 등 메소드 안
+// 용도: 숫자 문자열을 int 정수로 바꾸기
+// 문제 표현: 문자열을 정수로 변환하라 / Integer.parseInt를 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+int ${number} = Integer.parseInt(${text:link('"123"')});${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 두 문자열의 내용이 같은지 비교하기 | 문제 표현: 입력한 단어가 exit이면 / 두 문자열이 같으면 → 사용 [수업 6장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jequals">// 삽입 위치: main() 등 메소드 안
+// 용도: 두 문자열의 내용이 같은지 비교하기
+// 문제 표현: 입력한 단어가 exit이면 / 두 문자열이 같으면 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+if (${text:link('"sample"')}.equals(${otherText:link('"sample"')})) {
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 문자열을 구분자 기준으로 나눠 배열 만들기 | 문제 표현: 쉼표로 분리하라 / 구분자로 나누어라 / split을 사용하라 → 사용 [수업 6장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jsplit">// 삽입 위치: main() 등 메소드 안
+// 용도: 문자열을 구분자 기준으로 나눠 배열 만들기
+// 문제 표현: 쉼표로 분리하라 / 구분자로 나누어라 / split을 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+String[] ${parts} = ${text:link('"a,b"')}.split(${delimiter:link('","')});
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 수정 가능한 문자열을 만들고 내용 덧붙이기 | 문제 표현: StringBuffer를 사용하라 / 문자열을 추가·삽입·삭제하라 → 사용 [수업 6장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jbuffer">// 삽입 위치: main() 등 메소드 안
+// 용도: 수정 가능한 문자열을 만들고 내용 덧붙이기
+// 문제 표현: StringBuffer를 사용하라 / 문자열을 추가·삽입·삭제하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+StringBuffer ${buffer} = new StringBuffer();
+${buffer}.append(${text:link('""')});
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: StringTokenizer로 토큰을 하나씩 꺼내기 | 문제 표현: 토큰으로 분리하라 / StringTokenizer를 이용하라 → 사용 [수업 6장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jtoken">// 삽입 위치: main() 등 메소드 안
+// 용도: StringTokenizer로 토큰을 하나씩 꺼내기
+// 문제 표현: 토큰으로 분리하라 / StringTokenizer를 이용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.StringTokenizer)}StringTokenizer ${tokenizer} = new StringTokenizer(${text:link('"a/b"')}, ${delimiter:link('"/"')});
+while (${tokenizer}.hasMoreTokens()) {
+	String ${token} = ${tokenizer}.nextToken();
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 0 이상 지정 범위 미만의 임의 정수 만들기 | 문제 표현: 난수를 생성하라 / 무작위 정수를 구하라 → 사용 [수업 6장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jrandom">// 삽입 위치: main() 등 메소드 안
+// 용도: 0 이상 지정 범위 미만의 임의 정수 만들기
+// 문제 표현: 난수를 생성하라 / 무작위 정수를 구하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+int ${number} = (int) (Math.random() * ${bound:link('10')});${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: Calendar로 현재 연·월·일 읽기 | 문제 표현: 현재 날짜를 구하라 / Calendar 클래스를 사용하라 → 사용 [수업 6장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jcalendar">// 삽입 위치: main() 등 메소드 안
+// 용도: Calendar로 현재 연·월·일 읽기
+// 문제 표현: 현재 날짜를 구하라 / Calendar 클래스를 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.Calendar)}Calendar ${now} = Calendar.getInstance();
+int ${year} = ${now}.get(Calendar.YEAR);
+int ${month} = ${now}.get(Calendar.MONTH) + 1;
+int ${day} = ${now}.get(Calendar.DAY_OF_MONTH);
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 크기를 바꿀 수 있는 ArrayList 만들기 | 문제 표현: 입력 개수에 따라 저장하라 / ArrayList에 저장하라 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jlist">// 삽입 위치: main() 등 메소드 안
+// 용도: 크기를 바꿀 수 있는 ArrayList 만들기
+// 문제 표현: 입력 개수에 따라 저장하라 / ArrayList에 저장하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.ArrayList)}ArrayList&lt;${elementType:link('String','Integer','Double')}&gt; ${list} = new ArrayList&lt;&gt;();
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 크기를 바꿀 수 있는 Vector 만들기 | 문제 표현: Vector 컬렉션을 사용하라 / 벡터에 정수를 저장하라 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jvector">// 삽입 위치: main() 등 메소드 안
+// 용도: 크기를 바꿀 수 있는 Vector 만들기
+// 문제 표현: Vector 컬렉션을 사용하라 / 벡터에 정수를 저장하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.Vector)}Vector&lt;${elementType:link('Integer','String','Double')}&gt; ${vector} = new Vector&lt;&gt;();
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: LinkedList 만들기 | 문제 표현: LinkedList를 사용하라 / 연결 리스트에 저장하라 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jlinked">// 삽입 위치: main() 등 메소드 안
+// 용도: LinkedList 만들기
+// 문제 표현: LinkedList를 사용하라 / 연결 리스트에 저장하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.LinkedList)}LinkedList&lt;${elementType:link('String','Integer')}&gt; ${list} = new LinkedList&lt;&gt;();
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 리스트의 인덱스로 모든 요소 읽기 | 문제 표현: 리스트의 모든 요소를 출력하라 / i번째 요소를 가져와라 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jlistfor">// 삽입 위치: main() 등 메소드 안
+// 용도: 리스트의 인덱스로 모든 요소 읽기
+// 문제 표현: 리스트의 모든 요소를 출력하라 / i번째 요소를 가져와라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+for (int ${i} = 0; ${i} &lt; ${list}.size(); ${i}++) {
+	${elementType:link('String','Integer')} ${value} = ${list}.get(${i});
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: Iterator로 컬렉션 요소 순회하기 | 문제 표현: Iterator를 사용하라 / 반복자로 순차 검색하라 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jiter">// 삽입 위치: main() 등 메소드 안
+// 용도: Iterator로 컬렉션 요소 순회하기
+// 문제 표현: Iterator를 사용하라 / 반복자로 순차 검색하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.Iterator)}Iterator&lt;${elementType:link('String','Integer')}&gt; ${iterator} = ${list}.iterator();
+while (${iterator}.hasNext()) {
+	${elementType} ${value} = ${iterator}.next();
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 키로 값을 저장·조회할 HashMap 만들기 | 문제 표현: 이름으로 점수 검색 / 영단어로 뜻 검색 / 키와 값의 쌍 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jmap">// 삽입 위치: main() 등 메소드 안
+// 용도: 키로 값을 저장·조회할 HashMap 만들기
+// 문제 표현: 이름으로 점수 검색 / 영단어로 뜻 검색 / 키와 값의 쌍 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.HashMap)}HashMap&lt;${keyType:link('String','Integer')}, ${valueType:link('Integer','String')}&gt; ${map} = new HashMap&lt;&gt;();
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: HashMap의 모든 키와 대응값 순회하기 | 문제 표현: 맵에 저장된 모든 항목을 출력하라 / keySet()으로 순회하라 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jmapfor">// 삽입 위치: main() 등 메소드 안
+// 용도: HashMap의 모든 키와 대응값 순회하기
+// 문제 표현: 맵에 저장된 모든 항목을 출력하라 / keySet()으로 순회하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+for (${keyType:link('String','Integer')} ${key} : ${map}.keySet()) {
+	${valueType:link('Integer','String')} ${value} = ${map}.get(${key});
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 중복을 허용하지 않는 집합 만들기 | 문제 표현: 중복을 제거하라 / 서로 다른 값만 저장하라 / HashSet → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jset">// 삽입 위치: main() 등 메소드 안
+// 용도: 중복을 허용하지 않는 집합 만들기
+// 문제 표현: 중복을 제거하라 / 서로 다른 값만 저장하라 / HashSet → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.Set,java.util.HashSet)}Set&lt;${elementType:link('String','Integer')}&gt; ${set} = new HashSet&lt;&gt;();
+${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 리스트 요소를 오름차순으로 정렬하기 | 문제 표현: 오름차순으로 정렬하라 / 사전순으로 나열하라 → 사용 [수업 7장] | 삽입 위치: main() 등 메소드 안" enabled="true" name="jsort">// 삽입 위치: main() 등 메소드 안
+// 용도: 리스트 요소를 오름차순으로 정렬하기
+// 문제 표현: 오름차순으로 정렬하라 / 사전순으로 나열하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+${imports:import(java.util.Collections)}Collections.sort(${list});${cursor}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 여러 자료형을 받는 제네릭 클래스 만들기 | 문제 표현: 제네릭 클래스를 작성하라 / 타입 매개변수 T를 사용하라 → 사용 [수업 7장] | 삽입 위치: 클래스 선언 위치" enabled="true" name="jgeneric">// 삽입 위치: 클래스 선언 위치
+// 용도: 여러 자료형을 받는 제네릭 클래스 만들기
+// 문제 표현: 제네릭 클래스를 작성하라 / 타입 매개변수 T를 사용하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+class ${Box}&lt;T&gt; {
+	private T ${value};
+
+	public void set(T ${value}) {
+		this.${value} = ${value};
+	}
+
+	public T get() {
+		return ${value};
+	}
+	${cursor}
+}</template>
+  <template autoinsert="true" context="java" deleted="false" description="용도: 여러 자료형에 공통인 제네릭 메소드 만들기 | 문제 표현: 제네릭 메소드를 작성하라 / &lt;T&gt; 메소드를 정의하라 → 사용 [수업 7장] | 삽입 위치: 클래스 안·메소드 밖" enabled="true" name="jgenericmethod">// 삽입 위치: 클래스 안·메소드 밖
+// 용도: 여러 자료형에 공통인 제네릭 메소드 만들기
+// 문제 표현: 제네릭 메소드를 작성하라 / &lt;T&gt; 메소드를 정의하라 → 이 틀을 사용하고 변수·조건·타입을 문제에 맞게 수정하세요.
+public static &lt;T&gt; T ${methodName}(T ${value}) {
+	${cursor}
+	return ${value};
+}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 단위 환산 금액 계산 | 문제 표현: 환율 / 단가를 곱해 금액을 구하라 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojmoney">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 단위 환산 금액 계산
+// 문제 표현: 환율 / 단가를 곱해 금액을 구하라
+// 수정할 곳: RATE, 입력 타입, 결과 문자열
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        final long RATE = 1200; // 환율 또는 단가
+        long amount = sc.nextLong();
+        long total = amount * RATE;
+        System.out.println("$$" + amount + "=" + total + " won");
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 정수에서 날짜·자릿수 분리 | 문제 표현: 8자리 생일 / 년 월 일로 나누어라 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojdate">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 정수에서 날짜·자릿수 분리
+// 문제 표현: 8자리 생일 / 년 월 일로 나누어라
+// 수정할 곳: 나누는 자리수, 출력 형식
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int date = sc.nextInt();
+        int year = date / 10000;
+        int month = date / 100 % 100;
+        int day = date % 100;
+        System.out.println("year " + year + " month " + month + " date " + day);
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 여러 품목의 수량·단가 합계 | 문제 표현: 각 메뉴의 수량 / 총 금액을 계산하라 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojcost">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 여러 품목의 수량·단가 합계
+// 문제 표현: 각 메뉴의 수량 / 총 금액을 계산하라
+// 수정할 곳: price 배열, 품목 개수, 출력 문구
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] price = {2000, 1000, 3000};
+        long total = 0;
+        for (int i = 0; i &lt; price.length; i++) {
+            int quantity = sc.nextInt();
+            total += (long) price[i] * quantity;
+        }
+        System.out.println("Your total is " + total + " won.");
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 인원에 따른 방 개수·여행비 계산 | 문제 표현: 방 하나에 N명 / 숙박비와 항공료 / 공백 포함 여행지 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojtravel">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 인원에 따른 방 개수·여행비 계산
+// 문제 표현: 방 하나에 N명 / 숙박비와 항공료 / 공백 포함 여행지
+// 수정할 곳: CAPACITY, 비용식, 숙박일과 여행일 구분
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String destination = sc.nextLine(); // 공백을 포함한 첫 줄
+        int people = sc.nextInt();
+        int nights = sc.nextInt();
+        long airfare = sc.nextLong();
+        long roomPrice = sc.nextLong();
+        final int CAPACITY = 2;
+        int rooms = (people + CAPACITY - 1) / CAPACITY; // 양의 정수 나눗셈 올림
+        long total = people * airfare + rooms * nights * roomPrice;
+        System.out.println(people + " person tour to " + destination + " for " + (nights + 1) + " days and " + nights + " nights");
+        System.out.println("You need " + rooms + " rooms.");
+        System.out.println("The total cost is " + total + ".");
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 두 사람의 가중 감점 계산과 비교 | 문제 표현: 지각·결석 감점 / 점수가 높은 사람 / 같으면 equal | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojcompare">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 두 사람의 가중 감점 계산과 비교
+// 문제 표현: 지각·결석 감점 / 점수가 높은 사람 / 같으면 equal
+// 수정할 곳: 기준 점수와 감점 상수, 동점 처리, 출력 문구
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        final int BASE = 100, LATE = 3, ABSENT = 8;
+        String[] name = new String[2];
+        int[] deducted = new int[2];
+        int[] score = new int[2];
+        for (int i = 0; i &lt; 2; i++) {
+            name[i] = sc.next();
+            int late = sc.nextInt(), absent = sc.nextInt();
+            deducted[i] = late * LATE + absent * ABSENT;
+            score[i] = BASE - deducted[i];
+            System.out.println(deducted[i] + " points will be deducted from the attendance points of " + name[i] + ".");
+        }
+        if (score[0] == score[1]) System.out.println("equal");
+        else {
+            int win = score[0] &gt; score[1] ? 0 : 1;
+            System.out.println(name[win] + " attendance points are greater than " + name[1 - win] + ".");
+            System.out.println(name[win] + " attendance points are " + score[win] + ".");
+        }
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 2진 문자열의 개별 상태 비트 판별 | 문제 표현: 00001101처럼 입력 / 비트 0·1·2·3의 상태 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojbinary">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 2진 문자열의 개별 상태 비트 판별
+// 문제 표현: 00001101처럼 입력 / 비트 0·1·2·3의 상태
+// 수정할 곳: 각 비트 번호, 상태별 출력 문구
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int status = Integer.parseInt(sc.next(), 2); // 2진 문자열, 선행 0 허용
+        System.out.println("power: " + ((status &amp; (1 &lt;&lt; 0)) != 0 ? "on" : "off"));
+        System.out.println("door: " + ((status &amp; (1 &lt;&lt; 1)) != 0 ? "closed" : "open"));
+        System.out.println("light: " + ((status &amp; (1 &lt;&lt; 2)) != 0 ? "on" : "off"));
+        System.out.println("temperature: " + ((status &amp; (1 &lt;&lt; 3)) != 0 ? "less than 3" : "greater than or equal to 3"));
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 십진 정수에서 상태 비트·하위 비트 값 추출 | 문제 표현: 비트 6·7은 상태 / 하위 비트는 온도 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojbits">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 십진 정수에서 상태 비트·하위 비트 값 추출
+// 문제 표현: 비트 6·7은 상태 / 하위 비트는 온도
+// 수정할 곳: 필드 폭 WIDTH와 비트 번호; 원문의 0~5비트와 0~31 표기 충돌 시 시험 조건 확인
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int status = sc.nextInt();
+        final int WIDTH = 6; // 비트 0~5는 6비트: 값 범위 0~63. 5비트를 요구하면 5로 수정.
+        int temperature = status &amp; ((1 &lt;&lt; WIDTH) - 1);
+        boolean air = (status &amp; (1 &lt;&lt; 6)) != 0;
+        boolean running = (status &amp; (1 &lt;&lt; 7)) != 0;
+        System.out.println("running: " + (running ? "on" : "off"));
+        System.out.println("air conditioner: " + (air ? "on" : "off"));
+        System.out.println("temperature: " + temperature);
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 대응 배열에서 이름으로 값 반복 검색 | 문제 표현: 과목명으로 학점 / 없으면 none / stop이면 종료 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojlookup">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 대응 배열에서 이름으로 값 반복 검색
+// 문제 표현: 과목명으로 학점 / 없으면 none / stop이면 종료
+// 수정할 곳: key·value 배열, 종료어, 미발견 출력
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] key = {"C", "C++", "Python", "Java", "HTML5"};
+        String[] value = {"A", "B+", "B", "A+", "D"};
+        while (sc.hasNext()) {
+            String query = sc.next();
+            if (query.equals("stop")) break;
+            int found = -1;
+            for (int i = 0; i &lt; key.length; i++) {
+                if (key[i].equals(query)) { found = i; break; }
+            }
+            System.out.println(found &lt; 0 ? "none" : value[found]);
+        }
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 잘못된 입력 제외하며 양수의 합·개수·평균 누적 | 문제 표현: -1까지 / 문자열·실수 제외 / InputMismatchException | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojpositive">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 잘못된 입력 제외하며 양수의 합·개수·평균 누적
+// 문제 표현: -1까지 / 문자열·실수 제외 / InputMismatchException
+// 수정할 곳: 종료값, 허용 범위, 제외 메시지, 평균 출력 여부
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+import java.util.InputMismatchException;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long sum = 0;
+        int count = 0;
+        while (sc.hasNext()) {
+            try {
+                int n = sc.nextInt();
+                if (n == -1) break;
+                if (n &lt;= 0) { System.out.println(n + " is excluded."); continue; }
+                sum += n;
+                count++;
+            } catch (InputMismatchException e) {
+                String invalid = sc.next(); // 잘못된 토큰을 소비해야 무한 반복하지 않음
+                System.out.println(invalid + " is excluded.");
+            }
+        }
+        System.out.println("The sum is " + sum + " and the number is " + count + ".");
+        // 평균까지 요구하면 다음 줄을 활성화하고 출력 형식을 수정.
+        // if (count &gt; 0) System.out.printf(java.util.Locale.US, "%.2f%n", (double) sum / count);
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 메뉴 검색·수량 검증·가격 계산 반복 | 문제 표현: 없는 메뉴 / 수량은 양의 정수 / Quit까지 주문 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojorder">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 메뉴 검색·수량 검증·가격 계산 반복
+// 문제 표현: 없는 메뉴 / 수량은 양의 정수 / Quit까지 주문
+// 수정할 곳: 메뉴·단가 배열, 종료어, 오류 시 남은 줄 소비 정책
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+import java.util.InputMismatchException;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] menu = {"Americano", "Cappuccino", "Latte", "Espresso"};
+        int[] price = {3000, 3500, 4000, 5000};
+        while (sc.hasNext()) {
+            String name = sc.next();
+            if (name.equals("Quit")) break;
+            int index = -1;
+            for (int i = 0; i &lt; menu.length; i++) if (menu[i].equals(name)) { index = i; break; }
+            if (index &lt; 0) {
+                System.out.println(name + " is not available.");
+                if (sc.hasNextLine()) sc.nextLine(); // 이 템플릿은 주문 한 건이 한 줄
+                continue;
+            }
+            try {
+                int cups = sc.nextInt();
+                if (cups &lt;= 0) System.out.println("Please enter a positive integer for the number of cups.");
+                else System.out.println("The price is " + (long) cups * price[index] + " won.");
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a positive integer for the number of cups.");
+            }
+            if (sc.hasNextLine()) sc.nextLine();
+        }
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 입력으로 객체 생성하고 정보 출력 | 문제 표현: 필드와 생성자 / TV·상품 클래스 / show 메소드 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojobject">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 입력으로 객체 생성하고 정보 출력
+// 문제 표현: 필드와 생성자 / TV·상품 클래스 / show 메소드
+// 수정할 곳: 클래스명, 필드 타입·개수, 생성자와 show 출력
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+class TV {
+    private String name;
+    private int inch, price;
+    public TV(String name, int inch, int price) {
+        this.name = name;
+        this.inch = inch;
+        this.price = price;
+    }
+    public void show() {
+        System.out.println(name + " " + inch + "-inch TV with the price of " + price + " won");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TV tv = new TV(sc.next(), sc.nextInt(), sc.nextInt());
+        tv.show();
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 객체의 치수 초기화·증가·계산·상태 판단 | 문제 표현: 직육면체 / increase / 부피가 0인지 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojcuboid">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 객체의 치수 초기화·증가·계산·상태 판단
+// 문제 표현: 직육면체 / increase / 부피가 0인지
+// 수정할 곳: 필드와 계산식, 메소드명 volume/getVolume, 문장 끝 마침표
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+class Cuboid {
+    private int width, height, depth;
+    public Cuboid(int width, int height, int depth) {
+        this.width = width; this.height = height; this.depth = depth;
+    }
+    public long volume() { return (long) width * height * depth; }
+    public long getVolume() { return volume(); } // 주어진 main의 메소드명에 맞춰 사용
+    public void increase(int w, int h, int d) { width += w; height += h; depth += d; }
+    public boolean isZero() { return volume() == 0; }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Cuboid c = new Cuboid(sc.nextInt(), sc.nextInt(), sc.nextInt());
+        System.out.println("The volume of the cuboid is " + c.volume() + ".");
+        c.increase(sc.nextInt(), sc.nextInt(), sc.nextInt());
+        System.out.println("The volume of the cuboid is " + c.volume() + ".");
+        System.out.println("The volume of the cuboid is " + (c.isZero() ? "zero" : "not zero") + ".");
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 용량 제한 객체에 양수 저장·출력·평균 | 문제 표현: 최대 10개 / 초과는 버린다 / -1 종료 / 평균 한 자리 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojaverage">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 용량 제한 객체에 양수 저장·출력·평균
+// 문제 표현: 최대 10개 / 초과는 버린다 / -1 종료 / 평균 한 자리
+// 수정할 곳: LIMIT, 입력 허용 조건, 빈 배열 평균 처리, 소수점 자리
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+import java.util.Locale;
+class Average {
+    private static final int LIMIT = 10;
+    private int[] values = new int[LIMIT];
+    private int nextIndex = 0;
+    public void put(int n) {
+        if (n &gt; 0 &amp;&amp; nextIndex &lt; values.length) values[nextIndex++] = n;
+    }
+    public void showAll() {
+        for (int i = 0; i &lt; nextIndex; i++) {
+            if (i &gt; 0) System.out.print(" ");
+            System.out.print(values[i]);
+        }
+        System.out.println();
+    }
+    public double getAvg() {
+        long sum = 0;
+        for (int i = 0; i &lt; nextIndex; i++) sum += values[i];
+        return nextIndex == 0 ? 0.0 : (double) sum / nextIndex;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Average avg = new Average();
+        while (sc.hasNextInt()) { int n = sc.nextInt(); if (n == -1) break; avg.put(n); }
+        avg.showAll();
+        System.out.printf(Locale.US, "The average is %.1f.%n", avg.getAvg());
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: static 메소드로 두 배열 연결·출력 | 문제 표현: ArrayUtil / concat / 새 배열을 리턴하라 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojconcat">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: static 메소드로 두 배열 연결·출력
+// 문제 표현: ArrayUtil / concat / 새 배열을 리턴하라
+// 수정할 곳: 배열 크기 N·M, 원소 타입, 괄호·공백 출력
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+class ArrayUtil {
+    public static int[] concat(int[] a, int[] b) {
+        int[] result = new int[a.length + b.length];
+        for (int i = 0; i &lt; a.length; i++) result[i] = a[i];
+        for (int i = 0; i &lt; b.length; i++) result[a.length + i] = b[i];
+        return result;
+    }
+    public static void print(int[] a) {
+        System.out.print("[ ");
+        for (int n : a) System.out.print(n + " ");
+        System.out.println("]");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        final int N = 4, M = 4; // 길이가 입력으로 주어지면 sc.nextInt()로 변경
+        int[] a = new int[N], b = new int[M];
+        for (int i = 0; i &lt; a.length; i++) a[i] = sc.nextInt();
+        for (int i = 0; i &lt; b.length; i++) b[i] = sc.nextInt();
+        ArrayUtil.print(ArrayUtil.concat(a, b));
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: static 대응 배열·검색 메소드로 사전 만들기 | 문제 표현: Dictionary / kor2Eng / 없으면 null / exit 종료 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojdictionary">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: static 대응 배열·검색 메소드로 사전 만들기
+// 문제 표현: Dictionary / kor2Eng / 없으면 null / exit 종료
+// 수정할 곳: 대응 배열, 종료어, 검색 메소드명과 문구
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+class Dictionary {
+    private static String[] kor = {"sarang", "agi", "don", "mirae", "heemang"};
+    private static String[] eng = {"love", "baby", "money", "future", "hope"};
+    public static String kor2Eng(String word) {
+        for (int i = 0; i &lt; kor.length; i++) if (kor[i].equals(word)) return eng[i];
+        return null;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            String word = sc.next();
+            if (word.equals("exit")) { System.out.println("The program has ended."); break; }
+            String found = Dictionary.kor2Eng(word);
+            if (found == null) System.out.println(word + " is not in my dictionary.");
+            else System.out.println(word + " is " + found + " in English.");
+        }
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 상속·super·좌표 이동·문자열 표현 | 문제 표현: Point를 상속한 ColorPoint / 색과 좌표를 변경하라 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojcolorpoint">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 상속·super·좌표 이동·문자열 표현
+// 문제 표현: Point를 상속한 ColorPoint / 색과 좌표를 변경하라
+// 수정할 곳: 자식 필드, 부모 생성자 인자, toString 형식
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+
+class Point {
+    private int x, y;
+    public Point(int x, int y) { this.x = x; this.y = y; }
+    public int getX() { return x; }
+    public int getY() { return y; }
+    protected void move(int x, int y) { this.x = x; this.y = y; }
+}
+
+class ColorPoint extends Point {
+    private String color;
+    public ColorPoint(int x, int y, String color) { super(x, y); this.color = color; }
+    public void setXY(int x, int y) { move(x, y); }
+    public void setColor(String color) { this.color = color; }
+    @Override public String toString() { return color + " and (" + getX() + "," + getY() + ")"; }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ColorPoint p = new ColorPoint(5, 5, "RED");
+        p.setXY(sc.nextInt(), sc.nextInt());
+        p.setColor(sc.next());
+        System.out.println("The point has " + p + ".");
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 상속으로 차원 확장·move 오버로딩 | 문제 표현: Point3D / z축 이동 / 2차원·3차원 move | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojpoint3d">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 상속으로 차원 확장·move 오버로딩
+// 문제 표현: Point3D / z축 이동 / 2차원·3차원 move
+// 수정할 곳: 초기 좌표, 이동 명령 순서, 좌표 출력
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+
+class Point {
+    private int x, y;
+    public Point(int x, int y) { this.x = x; this.y = y; }
+    public int getX() { return x; }
+    public int getY() { return y; }
+    protected void move(int x, int y) { this.x = x; this.y = y; }
+}
+
+class Point3D extends Point {
+    private int z;
+    public Point3D(int x, int y, int z) { super(x, y); this.z = z; }
+    public void moveUp(int n) { z += n; }
+    public void moveDown(int n) { z -= n; }
+    public void move(int x, int y, int z) { super.move(x, y); this.z = z; }
+    @Override public String toString() { return "(" + getX() + "," + getY() + "," + z + ")"; }
+}
+public class Main {
+    static void show(Point3D p) { System.out.println("The point is " + p + "."); }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Point3D p = new Point3D(3, 2, 1);
+        show(p);
+        p.moveUp(sc.nextInt()); show(p);
+        p.moveDown(sc.nextInt()); show(p);
+        p.move(sc.nextInt(), sc.nextInt()); show(p);
+        p.move(sc.nextInt(), sc.nextInt(), sc.nextInt()); show(p);
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 부모의 저장 메소드를 재정의해 값 변환 | 문제 표현: BaseArray 상속 / 임계값보다 크면 1 아니면 0 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojthreshold">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 부모의 저장 메소드를 재정의해 값 변환
+// 문제 표현: BaseArray 상속 / 임계값보다 크면 1 아니면 0
+// 수정할 곳: SIZE·THRESHOLD, &gt; 또는 &gt;= 조건, 변환값
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+class BaseArray {
+    protected int[] array;
+    protected int nextIndex = 0;
+    public BaseArray(int size) { array = new int[size]; }
+    public int length() { return array.length; }
+    public void add(int n) { if (nextIndex &lt; array.length) array[nextIndex++] = n; }
+    public void print() {
+        for (int i = 0; i &lt; nextIndex; i++) {
+            if (i &gt; 0) System.out.print(" ");
+            System.out.print(array[i]);
+        }
+        System.out.println();
+    }
+}
+class BinaryArray extends BaseArray {
+    private int threshold;
+    public BinaryArray(int size, int threshold) { super(size); this.threshold = threshold; }
+    @Override public void add(int n) { super.add(n &gt; threshold ? 1 : 0); }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        final int SIZE = 10, THRESHOLD = 50;
+        BinaryArray a = new BinaryArray(SIZE, THRESHOLD);
+        for (int i = 0; i &lt; a.length(); i++) a.add(sc.nextInt());
+        a.print();
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 인터페이스·default 메소드·객체 배열 다형성 | 문제 표현: Shape 인터페이스 구현 / redraw / 면적 계산 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojinterface">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 인터페이스·default 메소드·객체 배열 다형성
+// 문제 표현: Shape 인터페이스 구현 / redraw / 면적 계산
+// 수정할 곳: 도형 종류, PI, 입력 개수, draw와 getArea 구현
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+
+interface Shape {
+    double PI = 3.14;
+    void draw();
+    double getArea();
+    default void redraw() { System.out.print("redraw "); draw(); }
+}
+
+class Circle implements Shape {
+    private int radius;
+    public Circle(int radius) { this.radius = radius; }
+    @Override public void draw() { System.out.println("circle with radius " + radius); }
+    @Override public double getArea() { return PI * radius * radius; }
+}
+class Rect implements Shape {
+    private int width, height;
+    public Rect(int width, int height) { this.width = width; this.height = height; }
+    @Override public void draw() { System.out.println(width + "x" + height + " rectangular"); }
+    @Override public double getArea() { return (double) width * height; }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Shape[] shapes = {new Circle(sc.nextInt()), new Rect(sc.nextInt(), sc.nextInt()), new Rect(sc.nextInt(), sc.nextInt())};
+        for (Shape s : shapes) s.redraw(); // 실제 객체의 draw가 호출됨
+        for (Shape s : shapes) System.out.printf(java.util.Locale.US, "The area is %.1f.%n", s.getArea());
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 부모 클래스 상속·오버라이딩·객체 배열 | 문제 표현: Shape 클래스 상속 / 여러 도형을 공통 배열에 저장 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojshapes">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 부모 클래스 상속·오버라이딩·객체 배열
+// 문제 표현: Shape 클래스 상속 / 여러 도형을 공통 배열에 저장
+// 수정할 곳: 부모 메소드 구현, 도형 종류, PI; 원문의 본문 없는 draw 선언은 컴파일 가능하게 수정
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+
+class Shape {
+    static final double PI = 3.14;
+    public void draw() { } // 일반 클래스의 메소드는 본문이 필요함
+    public double getArea() { return 0; }
+    public void redraw() { System.out.print("redraw "); draw(); }
+}
+
+class Circle extends Shape {
+    private int radius;
+    public Circle(int radius) { this.radius = radius; }
+    @Override public void draw() { System.out.println("circle with radius " + radius); }
+    @Override public double getArea() { return PI * radius * radius; }
+}
+class Rect extends Shape {
+    private int width, height;
+    public Rect(int width, int height) { this.width = width; this.height = height; }
+    @Override public void draw() { System.out.println(width + "x" + height + " rectangular"); }
+    @Override public double getArea() { return (double) width * height; }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Shape[] shapes = {new Circle(sc.nextInt()), new Rect(sc.nextInt(), sc.nextInt()), new Rect(sc.nextInt(), sc.nextInt())};
+        for (Shape s : shapes) s.redraw(); // 실제 객체의 draw가 호출됨
+        for (Shape s : shapes) System.out.printf(java.util.Locale.US, "The area is %.1f.%n", s.getArea());
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 추상 클래스와 연산별 자식 객체 선택 | 문제 표현: Add Sub Mul Div / calculate / 0 나누기 오류면 종료 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojcalculator">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 추상 클래스와 연산별 자식 객체 선택
+// 문제 표현: Add Sub Mul Div / calculate / 0 나누기 오류면 종료
+// 수정할 곳: 연산 종류, 정수·실수 여부, 오류 정책과 출력
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+abstract class Calc {
+    public String errorMsg;
+    protected int a, b;
+    public void setValue(int a, int b) { this.a = a; this.b = b; errorMsg = null; }
+    public abstract int calculate();
+}
+class Add extends Calc { @Override public int calculate() { return a + b; } }
+class Sub extends Calc { @Override public int calculate() { return a - b; } }
+class Mul extends Calc { @Override public int calculate() { return a * b; } }
+class Div extends Calc {
+    @Override public int calculate() {
+        if (b == 0) { errorMsg = "You cannot divide by zero."; return 0; }
+        return a / b;
+    }
+}
+class Calculator {
+    public void run() {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextInt()) {
+            int a = sc.nextInt(), b = sc.nextInt();
+            String op = sc.next();
+            Calc obj;
+            switch (op) {
+                case "+": obj = new Add(); break;
+                case "-": obj = new Sub(); break;
+                case "*": obj = new Mul(); break;
+                case "/": obj = new Div(); break;
+                default: System.out.println("Wrong operator"); sc.close(); return;
+            }
+            obj.setValue(a, b);
+            int result = obj.calculate();
+            if (obj.errorMsg != null) { System.out.println(obj.errorMsg + " Exit"); break; }
+            System.out.println("Result is " + result + ".");
+        }
+        sc.close();
+    }
+}
+public class Main {
+    public static void main(String[] args) { new Calculator().run(); }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: toString·equals로 객체 정보 출력·동등성 판단 | 문제 표현: 이름도 같고 학번도 같으면 / 동일 학생인지 비교 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojstudent">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: toString·equals로 객체 정보 출력·동등성 판단
+// 문제 표현: 이름도 같고 학번도 같으면 / 동일 학생인지 비교
+// 수정할 곳: 필드, 동등성 조건, toString 출력; equals와 hashCode를 함께 수정
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+import java.util.Objects;
+class Student {
+    private String name;
+    private int id;
+    public Student(String name, int id) { this.name = name; this.id = id; }
+    @Override public String toString() { return name + "'s id is " + id + "."; }
+    @Override public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Student other = (Student) obj;
+        return id == other.id &amp;&amp; Objects.equals(name, other.name);
+    }
+    @Override public int hashCode() { return Objects.hash(name, id); }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Student a = new Student(sc.next(), sc.nextInt());
+        Student b = new Student(sc.next(), sc.nextInt());
+        System.out.println(a);
+        System.out.println(a.equals(b) ? "They are the same." : "They are different.");
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 한 줄 분리·대소문자 정규화·등급 평균 | 문제 표현: A B C 학점 / 소문자 허용 / 오류 문자 / Quit 종료 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojgrades">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 한 줄 분리·대소문자 정규화·등급 평균
+// 문제 표현: A B C 학점 / 소문자 허용 / 오류 문자 / Quit 종료
+// 수정할 곳: 학점별 점수표, 오류 시 평균 생략 정책, 소수점 자리
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+import java.util.Locale;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine().trim();
+            if (line.equals("Quit")) break;
+            if (line.isEmpty()) continue;
+            String[] grades = line.toUpperCase(Locale.ROOT).split("\\s+");
+            boolean error = false;
+            double sum = 0;
+            for (String grade : grades) {
+                switch (grade) {
+                    case "A": sum += 100; break;
+                    case "B": sum += 90; break;
+                    case "C": sum += 80; break;
+                    case "D": sum += 70; break;
+                    case "F": break;
+                    default: System.out.println("Input error:" + grade); error = true;
+                }
+            }
+            if (!error) System.out.printf(Locale.US, "Average is %.2f.%n", sum / grades.length);
+        }
+        sc.close();
+    }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: 문자 배열 대칭 교환과 단어 맞히기 | 문제 표현: toCharArray / abcd를 dcba로 / Quit 종료 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojreverse">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: 문자 배열 대칭 교환과 단어 맞히기
+// 문제 표현: toCharArray / abcd를 dcba로 / Quit 종료
+// 수정할 곳: 단어 배열, 종료어, 성공·실패 문구와 &gt;&gt; 프롬프트
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+class WordShuffleGame {
+    private String[] words = {"vibrate", "extract", "nation", "connect", "lovely"};
+    private String shuffle(String src) {
+        char[] chars = src.toCharArray();
+        for (int left = 0, right = chars.length - 1; left &lt; right; left++, right--) {
+            char tmp = chars[left]; chars[left] = chars[right]; chars[right] = tmp;
+        }
+        return new String(chars);
+    }
+    public void run() {
+        Scanner sc = new Scanner(System.in);
+        for (String answer : words) {
+            System.out.println(shuffle(answer));
+            System.out.print("&gt;&gt;"); // 이 자료의 출력 예시에 명시된 프롬프트. 다른 OJ에서 불필요하면 삭제.
+            if (!sc.hasNext()) break;
+            String user = sc.next();
+            if (user.equals("Quit")) break;
+            if (user.equals(answer)) System.out.println("Success!!!");
+            else System.out.println("Fail!!! It is " + answer + ".");
+        }
+        sc.close();
+    }
+}
+public class Main {
+    public static void main(String[] args) { new WordShuffleGame().run(); }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: Vector에 양수 저장 후 최솟값 검색 | 문제 표현: -1까지 Vector&lt;Integer&gt; / 가장 작은 수 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojvectormin">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: Vector에 양수 저장 후 최솟값 검색
+// 문제 표현: -1까지 Vector&lt;Integer&gt; / 가장 작은 수
+// 수정할 곳: 입력 조건, 종료값, 최솟값·최댓값 비교식, 빈 입력 처리
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+import java.util.Vector;
+class IntegerVector {
+    private Vector&lt;Integer&gt; values = new Vector&lt;&gt;();
+    private void read() {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextInt()) {
+            int n = sc.nextInt();
+            if (n == -1) break;
+            if (n &gt; 0) values.add(n);
+        }
+        sc.close();
+    }
+    private int findLeastNumber() {
+        int least = values.get(0);
+        for (int n : values) if (n &lt; least) least = n;
+        return least;
+    }
+    public void run() {
+        read();
+        if (values.isEmpty()) return; // 원문에 없는 빈 입력 정책은 유사 문제 조건에 맞게 변경
+        System.out.println("The least integer is " + findLeastNumber() + ".");
+    }
+}
+public class Main {
+    public static void main(String[] args) { new IntegerVector().run(); }
+}
+${cursor}</template>
+  <template autoinsert="false" context="java" deleted="false" description="[통] 용도: HashMap에 입력 저장 후 별도 검색 단계 | 문제 표현: 이름·가격을 저장 / quit 후 이름으로 검색 | 삽입 위치: Main.java 전체 교체" enabled="true" name="ojstockmap">// 삽입 위치: Main.java 전체 교체 (기존 내용을 백업한 뒤 파일을 비우고 사용)
+// 용도: HashMap에 입력 저장 후 별도 검색 단계
+// 문제 표현: 이름·가격을 저장 / quit 후 이름으로 검색
+// 수정할 곳: 키·값 타입, 종료어, 자료에 있는 프롬프트 유지 여부
+// OJ: Main.java, public class Main 한 개, package 없음. 출력 문자열은 문제의 예시와 일치시킬 것.
+import java.util.Scanner;
+import java.util.HashMap;
+class StockHashMap {
+    private HashMap&lt;String, Integer&gt; stockMap = new HashMap&lt;&gt;();
+    private Scanner sc = new Scanner(System.in);
+    private void read() {
+        // 이 자료는 프롬프트도 출력 예시에 포함. 다른 OJ에서 요구하지 않으면 아래 두 출력문 삭제.
+        System.out.println("input name and price (samsung 75000)");
+        while (sc.hasNext()) {
+            System.out.print("name price&gt;&gt;");
+            String name = sc.next();
+            if (name.equals("quit")) break;
+            stockMap.put(name, sc.nextInt()); // 같은 이름이면 새 가격으로 덮어씀
+        }
+    }
+    private void search() {
+        System.out.println("search"); // 출력 예시의 프롬프트
+        while (sc.hasNext()) {
+            System.out.print("name&gt;&gt;");
+            String name = sc.next();
+            if (name.equals("quit")) break;
+            Integer price = stockMap.get(name); // 미발견을 위해 int 대신 Integer
+            if (price == null) System.out.println(name + "is not available."); // 원문 문자열: 이름 뒤 공백 없음
+            else System.out.println(name + " " + price + " won");
+        }
+    }
+    public void run() { read(); search(); sc.close(); }
+}
+public class Main {
+    public static void main(String[] args) { new StockHashMap().run(); }
+}
+${cursor}</template>
+</templates>
